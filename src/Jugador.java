@@ -9,24 +9,31 @@ public class Jugador {
 	private PImage jugador2;
 	private PApplet app;
 	
-	public Jugador (PApplet app) {
+	public Jugador (PApplet app, int xJ, int yJ) {
 		jugador1 = app.loadImage("jugador1.png");
 		jugador2 = app.loadImage("jugador1.1.png");
 		
-		this.xJ= xJ;
-		this.yJ= yJ;
+		this.xJ= 420;
+		this.yJ= 500;
 	}
 	
 	public void pintarJugador (PApplet app) {
-		app.image(jugador1, 450, 500);
-	
-}
-	
-	public void pintarJugador2 (PApplet app) {
-		app.image(jugador2, xJ, yJ);
+		app.image(jugador1, xJ, yJ);
 	}
 	
-	public void movimiento (int x, int y) {
+	
+	public void jugadorMove (PApplet app) {
+		
+		xJ= app.mouseX;
+		
+		if(xJ<100)  {
+			xJ=100;
+			
+		}
+		if(xJ>780) {
+			xJ=780;
+		}
+		
 		
 	}
 	

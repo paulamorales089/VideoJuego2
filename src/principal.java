@@ -32,10 +32,10 @@ public class principal extends PApplet {
 		juego = loadImage("pJuego.png");
 		
 //PINTAR JUGADOR 
-		jugador1 = new Jugador(this);
-		jugador2 = new Jugador(this);
+		jugador1 = new Jugador(this, 420,500);
+		jugador2 = new Jugador(this,420,500);
 
-		estado = 0;
+		estado = 1;
 
 	}
 
@@ -54,6 +54,7 @@ public class principal extends PApplet {
 		if (estado == 1) {
 			image(juego,0,0);
 			jugador1.pintarJugador(this);
+			jugador1.jugadorMove(this);
 			}
 	
 		
