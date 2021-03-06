@@ -10,11 +10,12 @@ public class Jugador {
 	private PApplet app;
 	
 	public Jugador (PApplet app, int xJ, int yJ) {
+		app.imageMode(app.CENTER);
 		jugador1 = app.loadImage("jugador1.png");
 		jugador2 = app.loadImage("jugador1.1.png");
 		
 		this.xJ= 420;
-		this.yJ= 500;
+		this.yJ= 620;
 	}
 	
 	public void pintarJugador (PApplet app) {
@@ -26,12 +27,12 @@ public class Jugador {
 		
 		xJ= app.mouseX;
 		
-		if(xJ<100)  {
-			xJ=100;
+		if(xJ<170)  {
+			xJ=170;
 			
 		}
-		if(xJ>780) {
-			xJ=780;
+		if(xJ>890) {
+			xJ=890;
 		}
 		
 		
