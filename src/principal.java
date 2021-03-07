@@ -18,6 +18,7 @@ public class principal extends PApplet {
 
 //PANTALLAS
 	PImage inicio;
+	PImage instrucciones;
 	PImage juego;
 
 //CAMBIO DE PANTALLAS
@@ -37,13 +38,14 @@ public class principal extends PApplet {
 	public void setup() {
 //PANTALLAS	
 		inicio = loadImage("pInicio.png");
+		instrucciones = loadImage("pInstrucciones.png");
 		juego = loadImage("pJuego.png");
 		
 //PINTAR JUGADOR 
 		jugador1 = new Jugador(this, 420,500);
 		jugador2 = new Jugador(this, 420,500);
 
-		estado = 3;
+		estado = 2;
 
 //LISTA ENEMIGO 1 - MURCIELAGO
 		listaEnemigos1 = new ArrayList<Enemigo1>();
@@ -67,7 +69,7 @@ public class principal extends PApplet {
 		
 //PANTALLA 2 INSTRUCCIONES
 		if(estado == 1) {
-			
+			image(instrucciones, 550, 350);
 		}
 //PANTALLA 3
 		if (estado == 2) {
@@ -92,10 +94,14 @@ public class principal extends PApplet {
 
 	@Override
 	public void mousePressed() {
-//CAMBIO A PANTALLA 3
+// CAMBIO A PANTALLA 2 - INSTRUCCIONES
 		if (mouseX > 452 && mouseX < 647 && mouseY > 483 && mouseY < 540) {
-			estado = 2;
+			estado = 1;
 		}
+// CAMBIO A PANTALLA 3 - JUEGO
+		if (mouseX > 935 && mouseX < 1025 && mouseY > 605 && mouseY < 665) {
+					estado = 2;
+				}
 	}
 // PINTA LISTA MURCIELAGOS - ENEMIGO 1
 	public void pintarListaEnemeigo1 () {
@@ -123,8 +129,8 @@ public class principal extends PApplet {
 		}
 	}
 	public void iniciarEnemigo2 () {
-		frameRate = (100);
-		if (frameCount == 100) {
+		frameRate = (110);
+		if (frameCount == 110) {
 			
 			int posX=150;
 			listaEnemigos2.add(new Enemigo2(this, posX,430));
