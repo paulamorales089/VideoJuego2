@@ -27,6 +27,9 @@ public class principal extends PApplet {
 //PINTAR JUGADOR 
 	Jugador jugador1, jugador2;
 	
+// PINTAR RAYO ASESINAO
+	Rayo rayo;
+	
 //PINTAR ENEMIGO 1
 	private ArrayList<Enemigo1> listaEnemigos1;
 	private ArrayList<Enemigo2> listaEnemigos2;
@@ -43,9 +46,10 @@ public class principal extends PApplet {
 		
 //PINTAR JUGADOR 
 		jugador1 = new Jugador(this, 420,500);
-		jugador2 = new Jugador(this, 420,500);
+		//jugador2 = new Jugador(this, 420,500);
 
-		estado = 2;
+// PINTAR RAYO
+		rayo = new Rayo(this, 420, 400);
 
 //LISTA ENEMIGO 1 - MURCIELAGO
 		listaEnemigos1 = new ArrayList<Enemigo1>();
@@ -54,6 +58,9 @@ public class principal extends PApplet {
 //LISTA ENEMIGO 2 - SEÑOR OJOTES
 		listaEnemigos2 = new ArrayList<Enemigo2>();
 		
+		
+
+		estado = 2;
 	}
 
 	@Override
@@ -74,8 +81,12 @@ public class principal extends PApplet {
 //PANTALLA 3
 		if (estado == 2) {
 			image(juego,550, 350);
+			rayo.pintarRayo(this);
+			rayo.rayoMove(this);
 			jugador1.pintarJugador(this);
 			jugador1.jugadorMove(this);
+			
+			
 			//enemigo1.pintarEnemigo1(this);
 			iniciarEnemigo1();
 			pintarListaEnemeigo1 ();
@@ -83,25 +94,41 @@ public class principal extends PApplet {
 		
 		if (estado == 3) {
 			image(juego,550, 350);
-			jugador2.pintarJugador(this);
-			jugador2.jugadorMove(this);
+			jugador1.pintarJugador(this);
+			jugador1.jugadorMove(this);
 			//enemigo2.pintarEnemigo2(this);
 			iniciarEnemigo2();
 			pintarListaEnemeigo2();
 			}
+		
 		}
 
 
 	@Override
 	public void mousePressed() {
+		if (estado == 2||estado == 3) {
+			alDispararJugador();
+		}
 // CAMBIO A PANTALLA 2 - INSTRUCCIONES
 		if (mouseX > 452 && mouseX < 647 && mouseY > 483 && mouseY < 540) {
 			estado = 1;
 		}
+		
 // CAMBIO A PANTALLA 3 - JUEGO
 		if (mouseX > 935 && mouseX < 1025 && mouseY > 605 && mouseY < 665) {
 					estado = 2;
 				}
+	}
+	
+// METODO PARA HACER APARECER LA SEGUNDA IMAGEN DEL JUGADOR
+	public void alDispararJugador() {
+		/*if (jugador1.getAparecer()==1) {
+			jugador1.setAparecer(0);
+		}*/
+		
+		if(jugador1.Aparecer()==true) {
+			jugador1.pintarJugador2(this);
+		}
 	}
 // PINTA LISTA MURCIELAGOS - ENEMIGO 1
 	public void pintarListaEnemeigo1 () {
