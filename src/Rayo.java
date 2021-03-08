@@ -8,6 +8,7 @@ public class Rayo {
 	private int yR;
 	private int velocidad;
 	private boolean visible;
+	private boolean mover;
 	private PImage rayo;
 	private PApplet app;
 		
@@ -19,6 +20,7 @@ public class Rayo {
 		velocidad = 20;
 		visible = true;
 		this.app=app;
+		this.mover=true;
 		}
 	public void pintarRayo () {
 		if ( visible == true) {
@@ -27,16 +29,18 @@ public class Rayo {
 		}
 	}
 	public void rayoMove () {
-		//xR= app.mouseX;
+		xR= app.mouseX;
+		if(mover==true) {
 		yR-=velocidad;
-		/*if(xR<170)  {
+		}
+		if(xR<170)  {
 			xR=170;
 			
 		}
 		if(xR>890) {
 			xR=890;
-		}*/
-	
+		}
+
 		
 	}
 	void generarRayo (int xArma, int yArma) {

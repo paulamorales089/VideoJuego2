@@ -49,7 +49,7 @@ public class principal extends PApplet {
 		//jugador2 = new Jugador(this, 420,500);
 
 // PINTAR RAYO
-		rayo = new Rayo(this, 420, 400);
+		//rayo = new Rayo(this, 420, 400);
 
 //LISTA ENEMIGO 1 - MURCIELAGO
 		listaEnemigos1 = new ArrayList<Enemigo1>();
@@ -69,14 +69,15 @@ public class principal extends PApplet {
 		System.out.println(mouseX + "," + mouseY);
 		background(255);
 		
+		
 //PANTALLA 1
 		if (estado == 0) {
-			image(inicio, 550, 350);
+			image(inicio, 0, 0);
 		}
 		
 //PANTALLA 2 INSTRUCCIONES
 		if(estado == 1) {
-			image(instrucciones, 550, 350);
+			image(instrucciones, 0, 0);
 		}
 //PANTALLA 3
 		if (estado == 2) {
@@ -85,11 +86,19 @@ public class principal extends PApplet {
 			//rayo.rayoMove(this);
 			jugador1.pintarJugador(this);
 			jugador1.jugadorMove(this);
+			jugador1.disparar();
 			
 			
 			//enemigo1.pintarEnemigo1(this);
 			iniciarEnemigo1();
 			pintarListaEnemeigo1 ();
+			
+			
+			//TIMER DISPAROS BALAS YEI
+			int s=second();
+			fill(255,255,255);
+			textSize(34);
+			text(s,140,92);
 			}
 		
 		if (estado == 3) {
@@ -100,6 +109,7 @@ public class principal extends PApplet {
 			iniciarEnemigo2();
 			pintarListaEnemeigo2();
 			}
+		
 		
 		}
 
