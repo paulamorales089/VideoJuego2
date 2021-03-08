@@ -34,10 +34,7 @@ public class Enemigo1 {
 		if (moveE1 == true) {
 			mostrarE1 = true;
 		}
-	
 	}
-	
-	
 	public int getxE1() {
 		return xE1;
 	}

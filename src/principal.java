@@ -131,7 +131,7 @@ public class principal extends PApplet {
 	public void iniciarEnemigo2 () {
 		frameRate = (110);
 		if (frameCount == 110) {
-			
+			 
 			int posX=150;
 			listaEnemigos2.add(new Enemigo2(this, posX,430));
 			frameCount = 0;
