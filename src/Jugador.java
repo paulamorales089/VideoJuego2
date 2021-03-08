@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -11,8 +13,14 @@ public class Jugador {
 	private boolean aparecer;
 	private PApplet app;
 	
+	private int coolDown;
+	
+	
+// ARRAY LIST DE LOS RAYOS
+	private ArrayList<Rayo> rayos;
+	
 	public Jugador (PApplet app, int xJ, int yJ) {
-		app.imageMode(app.CENTER);
+		
 		jugador1 = app.loadImage("jugador1.png");
 		jugador2 = app.loadImage("jugador1.1.png");
 		
@@ -20,6 +28,10 @@ public class Jugador {
 		this.yJ= 620;
 	//	this.aparecer= 1;
 		this.aparecer=true;
+		this.app=app;
+		
+		rayos = new ArrayList<>();
+		coolDown = 0;
 	}
 	
 	public void pintarJugador (PApplet app) {
@@ -28,6 +40,7 @@ public class Jugador {
 		}*/
 		
 		/*if (aparecer == false) {*/
+		app.imageMode(app.CENTER);
 			app.image(jugador1, xJ, yJ);
 		//}
 		
@@ -54,7 +67,30 @@ public class Jugador {
 			xJ=890;
 		}
 	}
+// METODOS PARA HACER QUE LOS RAYOS APAREZCAN
+	public void generarRayo () {
+		if (coolDown == 0) {
+	Rayo rayo= new Rayo(app,xJ,yJ);
+	rayos.add(rayo);
 	
+		}
+	}
+	public void disparar() {
+		
+		for (int i = 0; i < rayos.size(); i++) {
+			rayos.get(i).pintarRayo();
+			rayos.get(i).rayoMove();
+		}
+	}
+	public void eliminarRayos () {
+		for (int i = 0; i < rayos.size(); i++) {
+			if(rayos.get(i).getyR()<0) {
+				rayos.remove(i);
+			}
+		}
+	}
+	
+// GETS Y SETS 
 	public PImage getJugador1() {
 		return jugador1;
 	}
@@ -72,6 +108,10 @@ public class Jugador {
 		return aparecer;
 	}
 	
+// GET PARA GENERAR LOS RAYOS
+	public ArrayList<Rayo> getRayos() {
+		return rayos;
+	}
 	
 
 }

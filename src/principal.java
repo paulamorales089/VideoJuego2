@@ -81,8 +81,8 @@ public class principal extends PApplet {
 //PANTALLA 3
 		if (estado == 2) {
 			image(juego,550, 350);
-			rayo.pintarRayo(this);
-			rayo.rayoMove(this);
+		//	rayo.pintarRayo(this);
+			//rayo.rayoMove(this);
 			jugador1.pintarJugador(this);
 			jugador1.jugadorMove(this);
 			
@@ -103,20 +103,25 @@ public class principal extends PApplet {
 		
 		}
 
-
 	@Override
 	public void mousePressed() {
+		
+		
 		if (estado == 2||estado == 3) {
-			alDispararJugador();
+			//alDispararJugador();
+			jugador1.generarRayo();
+			jugador1.disparar();
 		}
 // CAMBIO A PANTALLA 2 - INSTRUCCIONES
 		if (mouseX > 452 && mouseX < 647 && mouseY > 483 && mouseY < 540) {
 			estado = 1;
+			
 		}
 		
 // CAMBIO A PANTALLA 3 - JUEGO
 		if (mouseX > 935 && mouseX < 1025 && mouseY > 605 && mouseY < 665) {
 					estado = 2;
+					
 				}
 	}
 	
@@ -165,4 +170,17 @@ public class principal extends PApplet {
 		}
 	}
 	
+	/*@Override
+	public void keyPressed() {
+	switch (key) {
+	case ' ':
+	//	jugador1.generarRayo();
+		jugador1.disparar();
+		
+		break;
+
+	
+	}
+	
+}*/
 }

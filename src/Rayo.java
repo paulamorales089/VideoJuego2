@@ -9,36 +9,49 @@ public class Rayo {
 	private int velocidad;
 	private boolean visible;
 	private PImage rayo;
+	private PApplet app;
 		
 		
-	public Rayo (PApplet app, int x, int y) {
-		rayo=app.loadImage("bala.png");
-		this.xR=450;
-		this.yR=510;
-		velocidad = 5;
+	public Rayo (PApplet app, int xR, int yR) {
+		rayo=app.loadImage("./data/bala.png");
+		this.xR=xR;
+		this.yR=yR;
+		velocidad = 20;
 		visible = true;
+		this.app=app;
 		}
-	public void pintarRayo (PApplet app) {
+	public void pintarRayo () {
+		if ( visible == true) {
 		rayo.resize(0, 80);
 		app.image(rayo,xR,yR);
-			
 		}
-	public void rayoMove (PApplet app) {
-		xR= app.mouseX;
+	}
+	public void rayoMove () {
+		//xR= app.mouseX;
 		yR-=velocidad;
-		if(xR<170)  {
+		/*if(xR<170)  {
 			xR=170;
 			
 		}
 		if(xR>890) {
 			xR=890;
-		}
+		}*/
 	
 		
 	}
 	void generarRayo (int xArma, int yArma) {
 			yR=velocidad;
 		}
+	
+// GETS Y SETS 
+	public int getxR() {
+		return xR;
+	}
+	
+	public int getyR() {
+		return yR;
+	}
+	
 	
 
 }
