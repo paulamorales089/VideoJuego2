@@ -92,6 +92,9 @@ public class principal extends PApplet {
 			//enemigo1.pintarEnemigo1(this);
 			iniciarEnemigo1();
 			pintarListaEnemeigo1 ();
+		//	desaparecerEnemigos();
+			
+			
 			
 			
 			//TIMER DISPAROS BALAS YEI
@@ -115,12 +118,11 @@ public class principal extends PApplet {
 
 	@Override
 	public void mousePressed() {
-		
-		
 		if (estado == 2||estado == 3) {
 			//alDispararJugador();
 			jugador1.generarRayo();
 			jugador1.disparar();
+			desaparecerEnemigos();
 		}
 // CAMBIO A PANTALLA 2 - INSTRUCCIONES
 		if (mouseX > 452 && mouseX < 647 && mouseY > 483 && mouseY < 540) {
@@ -180,6 +182,18 @@ public class principal extends PApplet {
 		}
 	}
 	
+	public void desaparecerEnemigos() {
+				
+		for (int i = 0; i < listaEnemigos1.size(); i++) { 	
+			if (dist(mouseX, mouseY, listaEnemigos1.get(i).getxE1() + 70,
+				listaEnemigos1.get(i).getyE1() + 40) < 40) { 		
+				System.out.println("yas this time :D"); 			
+				listaEnemigos1.remove(i);  		
+				}  		
+			} 
+		}
+		
+	}
 	/*@Override
 	public void keyPressed() {
 	switch (key) {
@@ -193,4 +207,3 @@ public class principal extends PApplet {
 	}
 	
 }*/
-}

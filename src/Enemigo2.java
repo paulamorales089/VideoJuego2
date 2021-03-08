@@ -6,6 +6,7 @@ public class Enemigo2 {
 	private int yE2;
 	private int aceleracion2;
 	private boolean moveE2;
+	private boolean mostrarE2;
 	private PImage enemigo2 ,enemigo21;
 
 	public Enemigo2 (PApplet app, int xE2, int yE2) {
@@ -16,6 +17,7 @@ public class Enemigo2 {
 		this.yE2=150;
 		this.aceleracion2=1;
 		this.moveE2 = true;
+		this.mostrarE2= true;
 	}
 	
 	public void pintarEnemigo2 (PApplet app) {
