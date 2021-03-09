@@ -40,7 +40,7 @@ public class principal extends PApplet {
 //PINTAR ENEMIGO 1
 	private ArrayList<Enemigo1> listaEnemigos1;
 	private ArrayList<Enemigo2> listaEnemigos2;
-	private ArrayList<Enemigo3> listaEnemigos3;
+	
 	//Enemigo1 enemigo1;
 	//Enemigo2 enemigo2;
 //CAMBIO DIRECCION ENEMIGO 3
@@ -69,8 +69,7 @@ public class principal extends PApplet {
 		//enemigo1 = new Enemigo1(this, 255, 150);
 //LISTA ENEMIGO 2 - SEÑOR OJOTES
 		listaEnemigos2 = new ArrayList<Enemigo2>();
-//LISTA ENEMIGO 3 - OJO MOSCA		
-		listaEnemigos3 = new ArrayList<Enemigo3>();
+
 		
 //SCORE PUNTAJE JAJA
 		score=0;
@@ -87,9 +86,6 @@ public class principal extends PApplet {
 
 		System.out.println(mouseX + "," + mouseY);
 		background(255);
-		
-	
-		
 		
 //PANTALLA 1 INICIO
 		if (estado == 0) {
@@ -153,20 +149,16 @@ public class principal extends PApplet {
 		
 			
 // CAMBIO A PANTALLA 2 - INSTRUCCIONES
-		if (mouseX > 452 && mouseX < 647 && mouseY > 483 && mouseY < 540) {
+		if (mouseX > 452 && mouseX < 647 && mouseY > 483 && mouseY < 540 && estado==0) {
 			estado = 1;
 		} else
-	
-			
 			
 // CAMBIO A PANTALLA 3 - JUEGO
 		if (mouseX > 935 && mouseX < 1025 && mouseY > 605 && mouseY < 665) {
 					estado = 2;
-					
-					
 		}
 		
-		if (estado == 2 /*||estado == 3*/) {
+		if (estado == 2 ) {
 			//alDispararJugador();
 			jugador1.generarRayo();
 			jugador1.disparar();
@@ -200,7 +192,7 @@ public class principal extends PApplet {
 		frameRate = (100);
 		if (frameCount == 100 && m<=20) {
 			
-			int posX= (int) random(200, 900);
+			int posX= (int) random(200,900);
 			listaEnemigos1.add(new Enemigo1(this, posX,150));
 			frameCount = 0;
 			}
@@ -262,69 +254,7 @@ public class principal extends PApplet {
 		}
 	}
 }
-	/*public void pintarListaEnemigo3 () {
-		
-		cambioDireccion = (int)random(4);
-		
-		for (int i = 0; i < listaEnemigos3.size(); i++) {
-			listaEnemigos3.get(i).pintarEnemigo3(this);
-			listaEnemigos3.get(i).moveEnemigo3(this);
-			
-			if(cambioDireccion == 0) {
-				listaEnemigos3.get(i).arriba();
-			}else if(cambioDireccion == 1 ){
-				listaEnemigos3.get(i).abajo();
-			}else if (cambioDireccion == 2) {
-				listaEnemigos3.get(i).derecha();
-			}
-			else if (cambioDireccion == 3) {
-				listaEnemigos3.get(i).izquierda();
-			}
-	}
-	}
-		public void iniciarEnemigo3() {		
-		if(estado==2) {
-			frameRate = (100);
-			if (frameCount == 100 && m<=20) {
-				
-				int posX= (int) random(100, 1000);
-				listaEnemigos1.add(new Enemigo1(this, posX,150));
-				frameCount = 0;
-				}
-			}
-}
-		
-		
-		/*if(cambioDireccion == 0) {
 	
-
-		listaEnemigos3.get
-		fantasmaR2.abajo();
-		fantasmaR3.abajo();
-	}
-	
-	else if(numberDecider == 1)
-	{
-		fantasmaR1.arriba();
-		fantasmaR2.arriba();
-		fantasmaR3.arriba();
-	}
-	
-	else if(numberDecider == 2)
-	{
-		fantasmaR1.derecha();
-	}
-	
-	else if(numberDecider == 3)
-	{
-		fantasmaR2.izquierda();
-	}
-	
-	else if(numberDecider == 4)
-	{
-		fantasmaR3.derecha();
-	}
-	}*/
 }
 
 	
