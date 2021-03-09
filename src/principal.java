@@ -94,10 +94,7 @@ public class principal extends PApplet {
 			pintarListaEnemeigo1 ();
 		//	desaparecerEnemigos();
 			
-			
-			
-			
-			//TIMER DISPAROS BALAS YEI
+//TIMER DISPAROS BALAS YEI
 			int s=second();
 			fill(255,255,255);
 			textSize(34);
