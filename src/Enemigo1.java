@@ -12,18 +12,19 @@ public class Enemigo1 {
 	public Enemigo1(PApplet app, int xE1, int yE1) {
 		enemigo1= app.loadImage("enemigo1.png");
 		
-		this.xE1=230;
-		this.yE1=150;
+		this.xE1=xE1;/*230*/
+		this.yE1=yE1;/*150*/
 		this.aceleracion=1;
 		this.moveE1 = true;
 		this.mostrarE1 = true;
 	}
 	public void pintarEnemigo1 (PApplet app) {
 		app.image(enemigo1, xE1, yE1);
-		app.image(enemigo1, xE1+150, yE1);
+		moveEnemigo1(app);
+		/*app.image(enemigo1, xE1+150, yE1);
 		app.image(enemigo1, xE1+300, yE1);
 		app.image(enemigo1, xE1+450, yE1);
-		app.image(enemigo1, xE1+600, yE1);
+		app.image(enemigo1, xE1+600, yE1);*/
 	}
 	public void moveEnemigo1 (PApplet app) {
 		if (moveE1 == true) {

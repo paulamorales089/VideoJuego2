@@ -17,7 +17,7 @@ public class Rayo {
 		rayo=app.loadImage("./data/bala.png");
 		this.xR=xR;
 		this.yR=yR;
-		velocidad = 20;
+		velocidad = 25;
 		visible = true;
 		this.app=app;
 		this.mover=true;

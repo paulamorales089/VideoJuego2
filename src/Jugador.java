@@ -44,7 +44,6 @@ public class Jugador {
 			app.image(jugador1, xJ, yJ);
 		//}
 		
-		
 	}
 	public void pintarJugador2 (PApplet app) {
 	/* if(aparecer == 0) {
