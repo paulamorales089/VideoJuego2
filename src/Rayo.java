@@ -11,8 +11,7 @@ public class Rayo {
 	private boolean mover;
 	private PImage rayo;
 	private PApplet app;
-		
-		
+	
 	public Rayo (PApplet app, int xR, int yR) {
 		rayo=app.loadImage("./data/bala.png");
 		this.xR=xR;
@@ -40,9 +39,7 @@ public class Rayo {
 		if(xR>890) {
 			xR=890;
 		}
-
-		
-	}
+}
 	void generarRayo (int xArma, int yArma) {
 			yR=velocidad;
 		}

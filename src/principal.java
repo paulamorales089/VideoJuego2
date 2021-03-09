@@ -40,9 +40,11 @@ public class principal extends PApplet {
 //PINTAR ENEMIGO 1
 	private ArrayList<Enemigo1> listaEnemigos1;
 	private ArrayList<Enemigo2> listaEnemigos2;
+	private ArrayList<Enemigo3> listaEnemigos3;
 	//Enemigo1 enemigo1;
 	//Enemigo2 enemigo2;
-
+//CAMBIO DIRECCION ENEMIGO 3
+	float cambioDireccion;
 	@Override
 
 	public void setup() {
@@ -67,7 +69,8 @@ public class principal extends PApplet {
 		//enemigo1 = new Enemigo1(this, 255, 150);
 //LISTA ENEMIGO 2 - SEÑOR OJOTES
 		listaEnemigos2 = new ArrayList<Enemigo2>();
-		
+//LISTA ENEMIGO 3 - OJO MOSCA		
+		listaEnemigos3 = new ArrayList<Enemigo3>();
 		
 //SCORE PUNTAJE JAJA
 		score=0;
@@ -76,7 +79,7 @@ public class principal extends PApplet {
 		m=0;
 		h=0;
 //ESTADO PANTALLAS
-		estado = 2;
+		estado = 0;
 	}
 
 	@Override
@@ -84,6 +87,8 @@ public class principal extends PApplet {
 
 		System.out.println(mouseX + "," + mouseY);
 		background(255);
+		
+	
 		
 		
 //PANTALLA 1 INICIO
@@ -133,68 +138,40 @@ public class principal extends PApplet {
 		m = 0; 			
 	}
 			
-	/*int s=second();
-	fill(255,255,255);
-	textSize(34);
-	text(s,140,92);*/
 	}else
 		
-		/*if (estado == 3) {
-			image(juego,550, 350);
-			jugador1.pintarJugador(this);
-			jugador1.jugadorMove(this);
-			//enemigo2.pintarEnemigo2(this);
-			iniciarEnemigo2();
-			pintarListaEnemeigo2();
-			
-			//SCORE PINTAR	
-			fill(255,255,255);
-			textSize(35);
-			text(score,1020,615);
-		//TIMER DISPAROS BALAS YEI
-			textSize(25);
-			if (s <= 59) { 		
-				s = s + 1; 		
-				text(h + " : " + m, 140, 88); 	
-			} else { 				
-				m = m + 1; 		
-				s = 0; 			
-			} 			
-			if (m <= 59) {  		
-						
-			} else { 		
-				h = h + 1; 				
-				m = 0; 			
-			}
-			}else*/
 //PANTALLA RESUMEN		
 		if(estado ==3) {
 			image(resumen,550,350);
 			textSize(35);
 			text(score,435,392);
 			text(h + " : " + m, 620, 392); 	
-			
 		}
 	}
-
 	@Override
 	public void mousePressed() {
-		if (estado == 2||estado == 3) {
-			//alDispararJugador();
-			jugador1.generarRayo();
-			jugador1.disparar();
-			desaparecerEnemigos1();
-			desaparecerEnemigos2();
-		} else
+		
 			
 // CAMBIO A PANTALLA 2 - INSTRUCCIONES
 		if (mouseX > 452 && mouseX < 647 && mouseY > 483 && mouseY < 540) {
 			estado = 1;
 		} else
+	
+			
 			
 // CAMBIO A PANTALLA 3 - JUEGO
 		if (mouseX > 935 && mouseX < 1025 && mouseY > 605 && mouseY < 665) {
 					estado = 2;
+					
+					
+		}
+		
+		if (estado == 2 /*||estado == 3*/) {
+			//alDispararJugador();
+			jugador1.generarRayo();
+			jugador1.disparar();
+			desaparecerEnemigos1();
+			desaparecerEnemigos2();
 		}
 	}
 	
@@ -219,10 +196,11 @@ public class principal extends PApplet {
 	}
 // MURCIELAGO ENEMIGO 1
 	public void iniciarEnemigo1 () {
+		if(estado==2) {
 		frameRate = (100);
-		if (frameCount == 100) {
-			if(m<=20) {
-			int posX= (int) random(100, 1000);
+		if (frameCount == 100 && m<=20) {
+			
+			int posX= (int) random(200, 900);
 			listaEnemigos1.add(new Enemigo1(this, posX,150));
 			frameCount = 0;
 			}
@@ -248,7 +226,7 @@ public class principal extends PApplet {
 			listaEnemigos2.add(new Enemigo2(this,680,100));
 			listaEnemigos2.add(new Enemigo2(this,830,100));
 			frameCount = 0;
-		}
+			}
 		}
 	}
 // QUITAR ENEMIGO 1 MURCIELAGO	
@@ -281,11 +259,72 @@ public class principal extends PApplet {
 			if (listaEnemigos1.get(i).getyE1()>600) {
 				estado=3;
 			}else {
-				
-			}
-			
 		}
 	}
+}
+	/*public void pintarListaEnemigo3 () {
 		
+		cambioDireccion = (int)random(4);
+		
+		for (int i = 0; i < listaEnemigos3.size(); i++) {
+			listaEnemigos3.get(i).pintarEnemigo3(this);
+			listaEnemigos3.get(i).moveEnemigo3(this);
+			
+			if(cambioDireccion == 0) {
+				listaEnemigos3.get(i).arriba();
+			}else if(cambioDireccion == 1 ){
+				listaEnemigos3.get(i).abajo();
+			}else if (cambioDireccion == 2) {
+				listaEnemigos3.get(i).derecha();
+			}
+			else if (cambioDireccion == 3) {
+				listaEnemigos3.get(i).izquierda();
+			}
 	}
+	}
+		public void iniciarEnemigo3() {		
+		if(estado==2) {
+			frameRate = (100);
+			if (frameCount == 100 && m<=20) {
+				
+				int posX= (int) random(100, 1000);
+				listaEnemigos1.add(new Enemigo1(this, posX,150));
+				frameCount = 0;
+				}
+			}
+}
+		
+		
+		/*if(cambioDireccion == 0) {
+	
+
+		listaEnemigos3.get
+		fantasmaR2.abajo();
+		fantasmaR3.abajo();
+	}
+	
+	else if(numberDecider == 1)
+	{
+		fantasmaR1.arriba();
+		fantasmaR2.arriba();
+		fantasmaR3.arriba();
+	}
+	
+	else if(numberDecider == 2)
+	{
+		fantasmaR1.derecha();
+	}
+	
+	else if(numberDecider == 3)
+	{
+		fantasmaR2.izquierda();
+	}
+	
+	else if(numberDecider == 4)
+	{
+		fantasmaR3.derecha();
+	}
+	}*/
+}
+
 	

@@ -22,22 +22,11 @@ public class Enemigo2 {
 	
 	public void pintarEnemigo2 (PApplet app) {
 		app.image(enemigo2, xE2, yE2);
-		/*app.image(enemigo2, xE2+150, yE2);
-		app.image(enemigo2, xE2+300, yE2);
-		app.image(enemigo2, xE2+450, yE2);
-		app.image(enemigo2, xE2+600, yE2);*/
-	}	
-	/*public void pintarEnemigo21 (PApplet app) {
-		app.image(enemigo21, xE2, yE2);
-		app.image(enemigo21, xE2+150, yE2);
-		app.image(enemigo21, xE2+300, yE2);
-		app.image(enemigo21, xE2+450, yE2);
-		app.image(enemigo21, xE2+600, yE2);
-	}*/
+	}
 	public void moveEnemigo2 (PApplet app) {
 		if (moveE2 == true) {
 			yE2+= aceleracionE2; 
-		}
+	}
 	}
 	public void mostrarEnemigo2 () { 
 	}
