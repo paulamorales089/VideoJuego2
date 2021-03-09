@@ -42,6 +42,12 @@ public class Enemigo2 {
 			yE2+= aceleracion2; 
 		}
 	}
+	public void mostrarEnemigo2 () { 
+		
+	}
+	
+	
+	
 	public int getxE2() {
 		return xE2;
 	}

@@ -23,6 +23,10 @@ public class principal extends PApplet {
 
 //CAMBIO DE PANTALLAS
 	int estado;
+//VARIABLES DEL TIMER
+	int s;
+	int m;
+	int h;
 	
 //PINTAR JUGADOR 
 	Jugador jugador1, jugador2;
@@ -58,9 +62,12 @@ public class principal extends PApplet {
 //LISTA ENEMIGO 2 - SEÑOR OJOTES
 		listaEnemigos2 = new ArrayList<Enemigo2>();
 		
-		
-
-		estado = 2;
+//VARIABLES TIMER		
+		s=0;
+		m=0;
+		h=0;
+//ESTADO PANTALLAS
+		estado = 0;
 	}
 
 	@Override
@@ -87,19 +94,33 @@ public class principal extends PApplet {
 			jugador1.pintarJugador(this);
 			jugador1.jugadorMove(this);
 			jugador1.disparar();
-			
-			
-			//enemigo1.pintarEnemigo1(this);
+		//enemigo1.pintarEnemigo1(this);
 			iniciarEnemigo1();
 			pintarListaEnemeigo1 ();
 		//	desaparecerEnemigos();
 			
 //TIMER DISPAROS BALAS YEI
-			int s=second();
-			fill(255,255,255);
-			textSize(34);
-			text(s,140,92);
-			}
+	fill(255,255,255);
+	textSize(34);
+		if (s <= 59) { 		
+			s = s + 1; 		
+			text(h + " : " + m, 140, 92); 	
+	} else { 				
+		m = m + 1; 		
+		s = 0; 			
+	} 			
+	if (m <= 59) {  		
+				
+	} else { 		
+		h = h + 1; 				
+		m = 0; 			
+	}
+			
+	/*int s=second();
+	fill(255,255,255);
+	textSize(34);
+	text(s,140,92);*/
+	}
 		
 		if (estado == 3) {
 			image(juego,550, 350);
@@ -120,12 +141,13 @@ public class principal extends PApplet {
 			jugador1.generarRayo();
 			jugador1.disparar();
 			desaparecerEnemigos();
-		}
+		} else 
 // CAMBIO A PANTALLA 2 - INSTRUCCIONES
 		if (mouseX > 452 && mouseX < 647 && mouseY > 483 && mouseY < 540) {
 			estado = 1;
+		} else 
 			
-		}
+		
 		
 // CAMBIO A PANTALLA 3 - JUEGO
 		if (mouseX > 935 && mouseX < 1025 && mouseY > 605 && mouseY < 665) {
