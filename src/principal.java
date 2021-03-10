@@ -24,10 +24,12 @@ public class principal extends PApplet {
 
 //CAMBIO DE PANTALLAS
 	int estado;
+	
 //VARIABLES DEL TIMER
 	int s;
 	int m;
 	int h;
+	
 //SCORE PUNTAJE JAJAJA
 	int score;
 
@@ -41,14 +43,13 @@ public class principal extends PApplet {
 	private ArrayList<Enemigo1> listaEnemigos1;
 	private ArrayList<Enemigo2> listaEnemigos2;
 
-	// Enemigo1 enemigo1;
-	// Enemigo2 enemigo2;
 //CAMBIO DIRECCION ENEMIGO 3
 	float cambioDireccion;
 
 	@Override
 
 	public void setup() {
+		
 //PANTALLAS	
 		inicio = loadImage("pInicio.png");
 		instrucciones = loadImage("pInstrucciones.png");
@@ -57,30 +58,29 @@ public class principal extends PApplet {
 
 //PINTAR JUGADOR 
 		jugador1 = new Jugador(this, 420, 500);
-		// jugador2 = new Jugador(this, 420,500);
-
-//PINTAR RAYO
-		// rayo = new Rayo(this, 420, 400);
+	
 
 //LISTA ENEMIGO 1 - MURCIELAGO
 		listaEnemigos1 = new ArrayList<Enemigo1>();
-		// enemigo1 = new Enemigo1(this, 255, 150);
+		
 //LISTA ENEMIGO 2 - SEÑOR OJOTES
 		listaEnemigos2 = new ArrayList<Enemigo2>();
 
 //SCORE PUNTAJE JAJA
 		score = 0;
+		
 //VARIABLES TIMER		
 		s = 0;
 		m = 0;
 		h = 0;
+		
 //ESTADO PANTALLAS
 		estado = 0;
 	}
 
 	@Override
 	public void draw() {
-
+		
 		System.out.println(mouseX + "," + mouseY);
 		background(255);
 
@@ -93,9 +93,9 @@ public class principal extends PApplet {
 		if (estado == 1) {
 			image(instrucciones, 0, 0);
 		} else
+			
 //PANTALLA 3 JUEGO
 		if (estado == 2) {
-
 			image(juego, 550, 350);
 			jugador1.pintarJugador(this);
 			jugador1.jugadorMove(this);
@@ -110,29 +110,28 @@ public class principal extends PApplet {
 
 			// PERDER SI TOCA EN BORDE ABAJO
 			limiteBordeInferior();
-			//limiteBordeInferior2(); 
+		
 
 //SCORE PINTAR	
-			fill(255, 255, 255);
-			textSize(35);
-			text(score, 1020, 615);
+	fill(255, 255, 255);
+	textSize(35);
+	text(score, 1020, 615);
+	
 //TIMER DISPAROS BALAS YEI
-			textSize(25);
-			if (s <= 59) {
-				s = s + 1;
-				text(h + " : " + m, 140, 88);
-			} else {
-				m = m + 1;
-				s = 0;
-			}
-			if (m <= 59) {
-
-			} else {
-				h = h + 1;
-				m = 0;
-			}
-
-		} else
+	textSize(25);
+	if (s <= 59) {
+		s = s + 1;
+		text(h + " : " + m, 140, 88);
+	} else {
+		m = m + 1;
+		s = 0;
+	}
+	if (m <= 59) {
+	} else {
+		h = h + 1;
+		m = 0;
+	}
+	} else
 
 //PANTALLA RESUMEN		
 		if (estado == 3) {
@@ -167,10 +166,6 @@ public class principal extends PApplet {
 
 // METODO PARA HACER APARECER LA SEGUNDA IMAGEN DEL JUGADOR
 	public void alDispararJugador() {
-		/*
-		 * if (jugador1.getAparecer()==1) { jugador1.setAparecer(0); }
-		 */
-
 		if (jugador1.Aparecer() == true) {
 			jugador1.pintarJugador2(this);
 		}
@@ -178,11 +173,8 @@ public class principal extends PApplet {
 
 // PINTA LISTA MURCIELAGOS - ENEMIGO 1
 	public void pintarListaEnemeigo1() {
-
 		for (int i = 0; i < listaEnemigos1.size(); i++) {
 			listaEnemigos1.get(i).pintarEnemigo1(this);
-			// listaEnemigos1.get(i).moveEnemigo1(this);
-
 		}
 	}
 
@@ -206,7 +198,6 @@ public class principal extends PApplet {
 				frameCount = 0;
 			}
 		}
-		
 	}
 
 // PINTA LISTA SEÑOR OJOTES - ENEMIGO 2
@@ -247,9 +238,9 @@ public class principal extends PApplet {
 
 // QUITAR ENEMIGO 2 SEÑOR OJOS RAROS
 	public void desaparecerEnemigos2() {
-
 		for (int i = 0; i < listaEnemigos2.size(); i++) {
-			if (dist(mouseX, mouseY, listaEnemigos2.get(i).getxE2() + 20, listaEnemigos2.get(i).getyE2() + 40) < 60) {
+			if (dist(mouseX, mouseY, listaEnemigos2.get(i).getxE2() + 20,
+				listaEnemigos2.get(i).getyE2() + 40) < 60) {
 				System.out.println("yas this time :D");
 				listaEnemigos2.remove(i);
 				score += 15;
@@ -269,11 +260,8 @@ public class principal extends PApplet {
 			if(listaEnemigos2.get(i).getyE2()>600) {
 				estado = 3; 
 			}
-			
 		}
 	}
-
-	
 }
 
 
