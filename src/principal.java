@@ -273,15 +273,7 @@ public class principal extends PApplet {
 		}
 	}
 
-	/*public void limiteBordeInferior2() {
-		for (int i = 0; i < listaEnemigos2.size(); i++){		{
-			if (listaEnemigos2.get(i).getyE2() > 600){
-						estado = 3;
-		} 
-			
-		}
-		}
-}*/
+	
 }
 
 
