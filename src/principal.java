@@ -146,15 +146,16 @@ public class principal extends PApplet {
 	public void mousePressed() {
 
 // CAMBIO A PANTALLA 2 - INSTRUCCIONES
+		
 		if (mouseX > 452 && mouseX < 647 && mouseY > 483 && mouseY < 540 && estado == 0) {
 			estado = 1;
 		} else
 
 // CAMBIO A PANTALLA 3 - JUEGO
+			
 		if (mouseX > 935 && mouseX < 1025 && mouseY > 605 && mouseY < 665) {
 			estado = 2;
 		}
-
 		if (estado == 2) {
 			// alDispararJugador();
 			jugador1.generarRayo();
@@ -165,6 +166,7 @@ public class principal extends PApplet {
 	}
 
 // METODO PARA HACER APARECER LA SEGUNDA IMAGEN DEL JUGADOR
+	
 	public void alDispararJugador() {
 		if (jugador1.Aparecer() == true) {
 			jugador1.pintarJugador2(this);
@@ -172,6 +174,7 @@ public class principal extends PApplet {
 	}
 
 // PINTA LISTA MURCIELAGOS - ENEMIGO 1
+	
 	public void pintarListaEnemeigo1() {
 		for (int i = 0; i < listaEnemigos1.size(); i++) {
 			listaEnemigos1.get(i).pintarEnemigo1(this);
@@ -179,6 +182,7 @@ public class principal extends PApplet {
 	}
 
 // MURCIELAGO ENEMIGO 1
+	
 	public void iniciarEnemigo1() {
 		if (estado == 2) {
 			frameRate = (100);
@@ -201,6 +205,7 @@ public class principal extends PApplet {
 	}
 
 // PINTA LISTA SEÑOR OJOTES - ENEMIGO 2
+	
 	public void pintarListaEnemeigo2() {
 		for (int i = 0; i < listaEnemigos2.size(); i++) {
 			listaEnemigos2.get(i).pintarEnemigo2(this);
@@ -213,18 +218,19 @@ public class principal extends PApplet {
 		//frameRate = (110);
 		if (frameCount == 110) {
 			if (m >= 20) {
-				int posX = (int) random(100, 100);
-				listaEnemigos2.add(new Enemigo2(this, 230, 100));
-				listaEnemigos2.add(new Enemigo2(this, 380, 100));
-				listaEnemigos2.add(new Enemigo2(this, 530, 100));
-				listaEnemigos2.add(new Enemigo2(this, 680, 100));
-				listaEnemigos2.add(new Enemigo2(this, 830, 100));
-				frameCount = 0;
+			int posX = (int) random(100, 100);
+			listaEnemigos2.add(new Enemigo2(this, 230, 100));
+			listaEnemigos2.add(new Enemigo2(this, 380, 100));
+			listaEnemigos2.add(new Enemigo2(this, 530, 100));
+			listaEnemigos2.add(new Enemigo2(this, 680, 100));
+			listaEnemigos2.add(new Enemigo2(this, 830, 100));
+			frameCount = 0;
 			}
 		}
 	}*/
 
 // QUITAR ENEMIGO 1 MURCIELAGO	
+	
 	public void desaparecerEnemigos1() {
 
 		for (int i = 0; i < listaEnemigos1.size(); i++) {
@@ -237,6 +243,7 @@ public class principal extends PApplet {
 	}
 
 // QUITAR ENEMIGO 2 SEÑOR OJOS RAROS
+	
 	public void desaparecerEnemigos2() {
 		for (int i = 0; i < listaEnemigos2.size(); i++) {
 			if (dist(mouseX, mouseY, listaEnemigos2.get(i).getxE2() + 20,
@@ -249,12 +256,12 @@ public class principal extends PApplet {
 	}
 
 //PERDER CUANDO LLEGUE AL BORDE INFERIOR 
+	
 	public void limiteBordeInferior() {
 		for (int i = 0; i < listaEnemigos1.size(); i++)	{
 			if (listaEnemigos1.get(i).getyE1() > 600)	{
 				estado = 3;
 			}
-			
 		}
 		for (int i = 0; i <listaEnemigos2.size(); i++) {
 			if(listaEnemigos2.get(i).getyE2()>600) {
